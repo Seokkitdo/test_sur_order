@@ -267,7 +267,7 @@ nav[aria-label="하단 네비게이션 바"] ul li {
   list-style: none;
 }
 
-nav[aria-label="하단 네비게이션 바"] ul li div {
+.nav-icon-wrapper {
   padding: 7px 16px;
 }
 
@@ -289,12 +289,31 @@ nav[aria-label="하단 네비게이션 바"] ul li .active {
   position: relative;
 }
 
-.order-button {
-  position: absolute;
-  top: -50px;
+.order-buttonWrap a {
+  margin-top: 4px;
 }
 
-.order-button a {
+.order-button {
+  position: absolute;
+  top: -35px;
+}
+
+.order-circle-outline {
+  position: absolute;
+  top: -42px;
+  width: 72px;
+  height: 72px;
+  background-color: #2a47bf;
+  border-radius: 50%;
+  opacity: 0.15;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.order-circle {
   width: 58px;
   height: 58px;
   background-color: #2a47bf;
@@ -306,7 +325,7 @@ nav[aria-label="하단 네비게이션 바"] ul li .active {
   text-decoration: none;
 }
 
-.order-button a div {
+.order-button .order-circle {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -314,12 +333,13 @@ nav[aria-label="하단 네비게이션 바"] ul li .active {
   margin-bottom: 5px;
 }
 
-.order-button a img {
+.order-circle img {
   width: 12x;
   height: 18px;
+  margin-bottom: 3px;
 }
 
-.order-button a span {
+.order-circle span {
   margin-top: 2px; /* 다른 내비게이션 항목과 같은 높이로 조정 */
   color: #fff;
   font-size: 9px;
