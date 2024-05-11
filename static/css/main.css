@@ -84,10 +84,54 @@ section {
 .main-banner-wrap {
   margin-bottom: 0;
 }
-#bx-pager {
+
+/* 슬라이드 */
+.sliderwrap {
+  width: 400px;
+}
+
+.sliderwrap img {
+  object-fit: cover;
+  width: 400px;
+  height: 200px;
+}
+
+.sliderwrap .bx-pager {
   position: absolute;
-  bottom: 20px;
-  right: 40px;
+  right: 20px;
+  bottom: 30px;
+  text-align: center;
+}
+
+.sliderwrap bx-default-pager {
+  color: blue; /* 현재 슬라이드 번호 및 총 슬라이드 개수 텍스트 색상 */
+  font-weight: bold;
+}
+
+.sliderwrap .bx-default-pager::after {
+  content: attr(data-total);
+  color: #fff; /* 총 슬라이드 개수 텍스트 색상 */
+}
+
+.sliderwrap .bx-pager div {
+  display: inline-block;
+}
+
+.sliderwrap .bx-pager div a {
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: gray;
+  color: transparent;
+  border-radius: 100%;
+}
+
+.bx-controls-direction {
+  display: none;
+}
+
+.sliderwrap .bx-pager div .active {
+  background: white;
 }
 
 /* 주류마켓 스타일 */
