@@ -12,124 +12,141 @@
     <link rel="stylesheet" href="../static/css/reset.css" />
     <!-- 메인 스타일 -->
     <link rel="stylesheet" href="../static/css/detail.css" />
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="../static/css/layout.css" />
   </head>
   <body>
-    <!-- 헤더 -->
-    <header>
-      <div class="header-left-wrapper">
-        <div class="svg-wrapper">
-          <img
-            src="../static//assets/img/chevron-left.svg"
-            alt="이전 회살표 아이콘"
-            srcset=""
-          />
+    <div class="container">
+      <div class="intro">
+        <div class="intro-content">
+          <h3 class="logo">SUL ORDER</h3>
+          <p>주류 1등 쇼핑몰</p>
         </div>
       </div>
-      <h2>우리마을막걸리</h2>
-      <div class="header-right-wrapper">
-        <div class="svg-wrapper">
-          <img src="../static//assets/img/hamburger.svg" alt="검색 아이콘"
-          srcset="" / >
-        </div>
-      </div>
-    </header>
 
-    <!-- 메인 -->
-    <main>
-      <section aria-label="디테일 이미지">
-        <div class="main-banner-wrap">
-          <ul class="slider">
-            <li>
-              <img src="../static/assets/img/카스라이트.png" />
-            </li>
-            <li>
-              <img src="../static/assets/img/카스라이트.png" />
-            </li>
-            <li>
-              <img src="../static/assets/img/카스라이트.png" />
-            </li>
-            <li>
-              <img src="../static/assets/img/카스라이트.png" />
-            </li>
-          </ul>
-        </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-        <script>
-          $(document).ready(function () {
-            var slider = $(".slider").bxSlider({
-              wrapperClass: "sliderwrap",
-              pager: true,
-              onSlideBefore: function ($slideElement, oldIndex, newIndex) {
-                // 여기에 슬라이드 변경 시 수행할 추가적인 작업을 넣을 수 있습니다.
-                console.log(
-                  "슬라이드가 " + newIndex + "번째로 변경되었습니다."
-                );
-              },
-            });
-          });
-        </script>
-      </section>
-
-      <section aria-label="주류 정보">
-        <div class="brand">보해</div>
-        <div class="title">우리마을 막걸리</div>
-        <div class="detail-info">
-          <div class="product-wrap">
-            <p class="product-detail">주류모델명</p>
-            <p class="product-detail-result">발렌타인 시리즈</p>
+      <div class="main-wrap">
+        <!-- 헤더 -->
+        <header>
+          <div class="header-left-wrapper">
+            <div class="svg-wrapper">
+              <img
+                src="../static//assets/img/chevron-left.svg"
+                alt="이전 회살표 아이콘"
+                srcset=""
+              />
+            </div>
           </div>
-
-          <div class="product-wrap">
-            <p class="product-detail">품명</p>
-            <p class="product-detail-result">조니워커</p>
+          <h2>우리마을막걸리</h2>
+          <div class="header-right-wrapper">
+            <div class="svg-wrapper">
+              <img src="../static//assets/img/hamburger.svg" alt="검색 아이콘"
+              srcset="" / >
+            </div>
           </div>
+        </header>
 
-          <div class="product-wrap">
-            <p class="product-detail">주류사</p>
-            <p class="product-detail-result">조니워커사</p>
-          </div>
+        <!-- 메인 -->
+        <main>
+          <section aria-label="디테일 이미지">
+            <div class="main-banner-wrap">
+              <ul class="slider">
+                <li>
+                  <img src="../static/assets/img/카스라이트.png" />
+                </li>
+                <li>
+                  <img src="../static/assets/img/카스라이트.png" />
+                </li>
+                <li>
+                  <img src="../static/assets/img/카스라이트.png" />
+                </li>
+                <li>
+                  <img src="../static/assets/img/카스라이트.png" />
+                </li>
+              </ul>
+            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+            <script>
+              $(document).ready(function () {
+                var slider = $(".slider").bxSlider({
+                  wrapperClass: "sliderwrap",
+                  pager: true,
+                  onSlideBefore: function ($slideElement, oldIndex, newIndex) {
+                    // 여기에 슬라이드 변경 시 수행할 추가적인 작업을 넣을 수 있습니다.
+                    console.log(
+                      "슬라이드가 " + newIndex + "번째로 변경되었습니다."
+                    );
+                  },
+                });
+              });
+            </script>
+          </section>
 
-          <div class="product-wrap">
-            <p class="product-detail">알콜도수</p>
-            <p class="product-detail-result alcohol">48.9%</p>
-          </div>
-        </div>
-      </section>
+          <section aria-label="주류 정보">
+            <div class="brand">보해</div>
+            <div class="title">우리마을 막걸리</div>
+            <div class="detail-info">
+              <div class="product-wrap">
+                <p class="product-detail">주류모델명</p>
+                <p class="product-detail-result">발렌타인 시리즈</p>
+              </div>
 
-      <div class="contour"></div>
+              <div class="product-wrap">
+                <p class="product-detail">품명</p>
+                <p class="product-detail-result">조니워커</p>
+              </div>
 
-      <section aria-label="상세정보">
-        <div class="tab-content">
-          <input type="radio" name="tabmenu" id="tab01" checked />
-          <label for="tab01">상세정보</label>
-          <!-- <input type="radio" name="tabmenu" id="tab02" checked />
+              <div class="product-wrap">
+                <p class="product-detail">주류사</p>
+                <p class="product-detail-result">조니워커사</p>
+              </div>
+
+              <div class="product-wrap">
+                <p class="product-detail">알콜도수</p>
+                <p class="product-detail-result alcohol">48.9%</p>
+              </div>
+            </div>
+          </section>
+
+          <div class="contour"></div>
+
+          <section aria-label="상세정보">
+            <div class="tab-content">
+              <input type="radio" name="tabmenu" id="tab01" checked />
+              <label for="tab01">상세정보</label>
+              <!-- <input type="radio" name="tabmenu" id="tab02" checked />
           <label for="tab02">FAQ</label>
           <input type="radio" name="tabmenu" id="tab03" checked />
           <label for="tab03">리뷰</label> -->
 
-          <div class="tab-contour"></div>
+              <div class="tab-contour"></div>
 
-          <div class="conbox con1">
-            <img src="../static/assets/img/detail.png" alt="디테일" srcset="" />
-          </div>
-          <!-- <div class="conbox con2">내용 2</div>
+              <div class="conbox con1">
+                <img
+                  src="../static/assets/img/detail.png"
+                  alt="디테일"
+                  srcset=""
+                />
+              </div>
+              <!-- <div class="conbox con2">내용 2</div>
           <div class="conbox con3">내용 3</div> -->
-        </div>
-      </section>
+            </div>
+          </section>
 
-      <div aria-label="주문">
-        <div class="bottom-wrap">
-          <div class="like-wrap">
-            <img
-              src="../static/assets/img/heart-fill.png"
-              alt="찜하기"
-              srcset=""
-            />
+          <div aria-label="주문">
+            <div class="bottom-wrap">
+              <div class="like-wrap">
+                <img
+                  src="../static/assets/img/heart-fill.png"
+                  alt="찜하기"
+                  srcset=""
+                />
+              </div>
+              <button class="order-button">주문하기</button>
+            </div>
           </div>
-          <button class="order-button">주문하기</button>
-        </div>
+        </main>
       </div>
-    </main>
+    </div>
   </body>
 </html>
