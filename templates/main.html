@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="../static/css/reset.css" />
     <!-- 메인 스타일 -->
     <link rel="stylesheet" href="../static/css/main.css" />
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="../static/css/layout.css" />
 
     <style>
       .bx-wrapper {
@@ -22,296 +24,312 @@
     </style>
   </head>
   <body>
-    <!-- 헤더 -->
-    <header>
-      <h3 class="logo">SUL ORDER</h3>
-      <div class="header-sidemenu-btn">☰</div>
-    </header>
-
-    <!-- 메인 -->
-    <main>
-      <!-- 유저정보 -->
-      <section aria-label="유저 정보">
-        <div class="user-info">
-          <span class="user-name">오비일번지님</span>
-          <button class="order-btn"><span>주류주문</span></button>
+    <div class="container">
+      <div class="intro">
+        <div class="intro-content">
+          <h3 class="logo">SUL ORDER</h3>
+          <p>주류 1등 쇼핑몰</p>
         </div>
-        <p class="welcome-msg">주류주문서비스에 오신 것을 환영합니다.</p>
-      </section>
+      </div>
 
-      <!-- 메인 배너 -->
-      <section aria-label="메인 배너" class="main-section">
-        <div class="main-banner-wrap">
-          <ul class="slider">
+      <div class="main-wrap">
+        <!-- 헤더 -->
+        <header>
+          <h3 class="logo">SUL ORDER</h3>
+          <div class="header-sidemenu-btn">
+            <img src="../static/assets/img/hamburger.svg" alt="" />
+          </div>
+        </header>
+
+        <!-- 메인 -->
+        <main>
+          <!-- 유저정보 -->
+          <section aria-label="유저 정보">
+            <div class="user-info">
+              <span class="user-name">오비일번지님</span>
+              <button class="order-btn"><span>주류주문</span></button>
+            </div>
+            <p class="welcome-msg">주류주문서비스에 오신 것을 환영합니다.</p>
+          </section>
+
+          <!-- 메인 배너 -->
+          <section aria-label="메인 배너" class="main-section">
+            <div class="main-banner-wrap">
+              <ul class="slider">
+                <li>
+                  <img src="../static/assets/img/top_kmi.png" />
+                </li>
+                <li>
+                  <img src="../static/assets/img/top_order.jpg" />
+                </li>
+              </ul>
+            </div>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+            <script>
+              $(document).ready(function () {
+                var slider = $(".slider").bxSlider({
+                  wrapperClass: "sliderwrap",
+                  pagerType: "short",
+                  // pagerShortSeparator: " / ",
+                  onSliderLoad: function (currentIndex) {
+                    console.log(currentIndex);
+                    var totalSlides = slider.getSlideCount();
+
+                    console.log(totalSlides);
+                    $(".bx-default-pager").attr("data-total", currentIndex + 1);
+                  },
+                });
+              });
+            </script>
+          </section>
+
+          <!-- 주류 마켓 -->
+          <section aria-label="주류마켓">
+            <h2>주류마켓</h2>
+            <ul class="market-grid">
+              <li>
+                <a href="#">
+                  <div>
+                    <img
+                      src="../static/assets/img/국산맥주.png"
+                      alt="국산맥주"
+                    />
+                  </div>
+                </a>
+                <span>국산맥주</span>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img
+                      src="../static/assets/img/수입맥주.png"
+                      alt="수입맥주"
+                    />
+                  </div>
+                  <span>수입맥주</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img
+                      src="../static/assets/img/희석식소주.png"
+                      alt="회석식소주"
+                    />
+                  </div>
+                  <span>회석식소주</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img
+                      src="../static/assets/img/증류식소주.png"
+                      alt="증류식소주"
+                    />
+                  </div>
+                  <span>증류식소주</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img src="../static/assets/img/민속주.png" alt="민속주" />
+                  </div>
+                  <span>민속주</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img src="../static/assets/img/전통주.png" alt="전통주" />
+                  </div>
+                  <span>전통주</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img src="../static/assets/img/위스키.png" alt="위스키" />
+                  </div>
+                  <span>위스키</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img src="../static/assets/img/보드카.png" alt="보드카" />
+                  </div>
+                  <span>보드카</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img src="../static/assets/img/리큐르.png" alt="리큐르" />
+                  </div>
+                  <span>리큐르</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img src="../static/assets/img/와인.png" alt="와인" />
+                  </div>
+                  <span>와인</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img
+                      src="../static/assets/img/일본사케.png"
+                      alt="일본사케"
+                    />
+                  </div>
+                  <span>일본사케</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img src="../static/assets/img/청주.png" alt="청주" />
+                  </div>
+                  <span>청주</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img src="../static/assets/img/중국술.png" alt="중국술" />
+                  </div>
+                  <span>중국술</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img src="../static/assets/img/고량주.png" alt="고량주" />
+                  </div>
+                  <span>고량주</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img src="../static/assets/img/탁주.png" alt="탁주" />
+                  </div>
+                  <span>탁주</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img
+                      src="../static/assets/img/기타제재주.png"
+                      alt="기타제주주"
+                    />
+                  </div>
+                  <span>기타제주주</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div>
+                    <img
+                      src="../static/assets/img/무알콜(비주류).png"
+                      alt="무알콜(비주류)"
+                    />
+                  </div>
+                  <span>무알콜(비주류)</span>
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          <!-- 여러개 한번에 보이는 배너 -->
+
+          <div class="contour"></div>
+          <!-- 공지사항 -->
+          <section aria-label="공지사항">
+            <div>
+              <h2>공지사항</h2>
+              <div>
+                <a href=""><span>전체보기</span></a>
+              </div>
+            </div>
+            <ul class="notice-list">
+              <li>
+                <span>개인정보처리방침 수정내용 안내</span>
+                <time datetime="2024-03-25">2024.03.25</time>
+              </li>
+              <li>
+                <span>주류마켓 이용 시 주의사항</span>
+                <time datetime="2024-03-25">2024.03.25</time>
+              </li>
+              <li>
+                <span>주류마켓 서비스 이용 변경 안내</span>
+                <time datetime="2024-03-25">2024.03.25</time>
+              </li>
+            </ul>
+          </section>
+
+          <!-- 광고 슬라이드 -->
+          <section aria-label="광고 슬라이드">
+            <h2>라거의 반전 켈리</h2>
+            <figure>
+              <img src="kelly_beer.png" alt="켈리 맥주 이미지" />
+              <figcaption>프리미엄 맥아 100% 더블 숙성 라거</figcaption>
+            </figure>
+          </section>
+        </main>
+
+        <!-- 하단 내비게이션 -->
+        <nav aria-label="하단 네비게이션 바">
+          <ul>
             <li>
-              <img
-                src="../static/assets/img/top_kmi.png"
-                style="border-radius: 12px"
-              />
+              <div class="nav-icon-wrapper">
+                <img src="/static/assets/img/홈.svg" alt="" />
+              </div>
+              <a href="#" class="active">홈</a>
             </li>
             <li>
-              <img
-                src="../static/assets/img/top_order.jpg"
-                style="border-radius: 12px"
-              />
+              <div class="nav-icon-wrapper">
+                <img src="/static/assets/img/조회.svg" alt="" />
+              </div>
+              <a href="#">조회</a>
+            </li>
+            <li class="order-buttonWrap">
+              <div class="order-circle-outline"></div>
+              <div class="order-button">
+                <div class="order-circle">
+                  <img src="/static/assets/img/주문.svg" alt="" />
+                  <span>ORDER</span>
+                </div>
+              </div>
+
+              <div style="opacity: 0" class="nav-icon-wrapper">
+                <img src="/static/assets/img/주판.svg" alt="" />
+              </div>
+              <a href="#">주문</a>
+            </li>
+            <li>
+              <div class="nav-icon-wrapper">
+                <img src="/static/assets/img/통계.svg" alt="" />
+              </div>
+              <a href="#">통계</a>
+            </li>
+            <li>
+              <div class="nav-icon-wrapper">
+                <img src="/static/assets/img/주판.svg" alt="" />
+              </div>
+              <a href="#">주판</a>
             </li>
           </ul>
-        </div>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-        <script>
-          $(document).ready(function () {
-            var slider = $(".slider").bxSlider({
-              wrapperClass: "sliderwrap",
-              pagerType: "short",
-              // pagerShortSeparator: " / ",
-              onSliderLoad: function (currentIndex) {
-                console.log(currentIndex);
-                var totalSlides = slider.getSlideCount();
-
-                console.log(totalSlides);
-                $(".bx-default-pager").attr("data-total", currentIndex + 1);
-              },
-            });
-          });
-        </script>
-      </section>
-
-      <!-- 주류 마켓 -->
-      <section aria-label="주류마켓">
-        <h2>주류마켓</h2>
-        <ul class="market-grid">
-          <li>
-            <a href="#">
-              <div>
-                <img src="../static/assets/img/국산맥주.png" alt="국산맥주" />
-              </div>
-            </a>
-            <span>국산맥주</span>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img src="../static/assets/img/수입맥주.png" alt="수입맥주" />
-              </div>
-              <span>수입맥주</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img
-                  src="../static/assets/img/희석식소주.png"
-                  alt="회석식소주"
-                />
-              </div>
-              <span>회석식소주</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img
-                  src="../static/assets/img/증류식소주.png"
-                  alt="증류식소주"
-                />
-              </div>
-              <span>증류식소주</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img src="../static/assets/img/민속주.png" alt="민속주" />
-              </div>
-              <span>민속주</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img src="../static/assets/img/전통주.png" alt="전통주" />
-              </div>
-              <span>전통주</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img src="../static/assets/img/위스키.png" alt="위스키" />
-              </div>
-              <span>위스키</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img src="../static/assets/img/보드카.png" alt="보드카" />
-              </div>
-              <span>보드카</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img src="../static/assets/img/리큐르.png" alt="리큐르" />
-              </div>
-              <span>리큐르</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img src="../static/assets/img/와인.png" alt="와인" />
-              </div>
-              <span>와인</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img src="../static/assets/img/일본사케.png" alt="일본사케" />
-              </div>
-              <span>일본사케</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img src="../static/assets/img/청주.png" alt="청주" />
-              </div>
-              <span>청주</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img src="../static/assets/img/중국술.png" alt="중국술" />
-              </div>
-              <span>중국술</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img src="../static/assets/img/고량주.png" alt="고량주" />
-              </div>
-              <span>고량주</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img src="../static/assets/img/탁주.png" alt="탁주" />
-              </div>
-              <span>탁주</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img
-                  src="../static/assets/img/기타제재주.png"
-                  alt="기타제주주"
-                />
-              </div>
-              <span>기타제주주</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <div>
-                <img
-                  src="../static/assets/img/무알콜(비주류).png"
-                  alt="무알콜(비주류)"
-                />
-              </div>
-              <span>무알콜(비주류)</span>
-            </a>
-          </li>
-        </ul>
-      </section>
-
-      <!-- 여러개 한번에 보이는 배너 -->
-
-      <div class="contour"></div>
-      <!-- 공지사항 -->
-      <section aria-label="공지사항">
-        <div>
-          <h2>공지사항</h2>
-          <div>
-            <a href=""><span>전체보기</span></a>
-          </div>
-        </div>
-        <ul class="notice-list">
-          <li>
-            <span>개인정보처리방침 수정내용 안내</span>
-            <time datetime="2024-03-25">2024.03.25</time>
-          </li>
-          <li>
-            <span>주류마켓 이용 시 주의사항</span>
-            <time datetime="2024-03-25">2024.03.25</time>
-          </li>
-          <li>
-            <span>주류마켓 서비스 이용 변경 안내</span>
-            <time datetime="2024-03-25">2024.03.25</time>
-          </li>
-        </ul>
-      </section>
-
-      <!-- 광고 슬라이드 -->
-      <section aria-label="광고 슬라이드">
-        <h2>라거의 반전 켈리</h2>
-        <figure>
-          <img src="kelly_beer.png" alt="켈리 맥주 이미지" />
-          <figcaption>프리미엄 맥아 100% 더블 숙성 라거</figcaption>
-        </figure>
-      </section>
-    </main>
-
-    <!-- 하단 내비게이션 -->
-    <nav aria-label="하단 네비게이션 바">
-      <ul>
-        <li>
-          <div class="nav-icon-wrapper">
-            <img src="/static/assets/img/홈.svg" alt="" />
-          </div>
-          <a href="#" class="active">홈</a>
-        </li>
-        <li>
-          <div class="nav-icon-wrapper">
-            <img src="/static/assets/img/조회.svg" alt="" />
-          </div>
-          <a href="#">조회</a>
-        </li>
-        <li class="order-buttonWrap">
-          <div class="order-circle-outline"></div>
-          <div class="order-button">
-            <div class="order-circle">
-              <img src="/static/assets/img/주문.svg" alt="" />
-              <span>ORDER</span>
-            </div>
-          </div>
-
-          <div style="opacity: 0" class="nav-icon-wrapper">
-            <img src="/static/assets/img/주판.svg" alt="" />
-          </div>
-          <a href="#">주문</a>
-        </li>
-        <li>
-          <div class="nav-icon-wrapper">
-            <img src="/static/assets/img/통계.svg" alt="" />
-          </div>
-          <a href="#">통계</a>
-        </li>
-        <li>
-          <div class="nav-icon-wrapper">
-            <img src="/static/assets/img/주판.svg" alt="" />
-          </div>
-          <a href="#">주판</a>
-        </li>
-      </ul>
-    </nav>
+        </nav>
+      </div>
+    </div>
   </body>
 </html>
