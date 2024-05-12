@@ -12,387 +12,401 @@
     <link rel="stylesheet" href="../static/css/reset.css" />
     <!-- 메인 스타일 -->
     <link rel="stylesheet" href="../static/css/list.css" />
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="../static/css/layout.css" />
   </head>
   <body>
-    <!-- 필터 모달 -->
-    <div class="bottom-sheet">
-      <div class="sheet-overlay"></div>
-      <div class="content">
-        <!-- <div class="header">
+    <div class="container">
+      <div class="intro">
+        <div class="intro-content">
+          <h3 class="logo">SUL ORDER</h3>
+          <p>주류 1등 쇼핑몰</p>
+        </div>
+      </div>
+
+      <div class="main-wrap">
+        <!-- 필터 모달 -->
+        <div class="bottom-sheet">
+          <div class="sheet-overlay"></div>
+          <div class="content">
+            <!-- <div class="header">
           <div class="drag-icon"><span></span></div>
         </div> -->
-        <div class="body">
-          <div class="modal-header">
-            <h2>검색필터</h2>
-            <div class="svg-wrapper close-icon">
+            <div class="body">
+              <div class="modal-header">
+                <h2>검색필터</h2>
+                <div class="svg-wrapper close-icon">
+                  <img
+                    src="../static/assets/img/close.svg"
+                    alt="모달닫기 아이콘"
+                    srcset=""
+                  />
+                </div>
+              </div>
+              <div class="filter-txt">
+                <div class="filter-option selected">인기순</div>
+                <div class="filter-option">알콜도수 순</div>
+                <div class="filter-option">모델/시리즈별</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 헤더 -->
+        <header>
+          <div class="header-left-wrapper">
+            <div class="svg-wrapper">
               <img
-                src="../static/assets/img/close.svg"
-                alt="모달닫기 아이콘"
+                src="../static//assets/img/chevron-left.svg"
+                alt="이전 회살표 아이콘"
                 srcset=""
               />
             </div>
           </div>
-          <div class="filter-txt">
-            <div class="filter-option selected">인기순</div>
-            <div class="filter-option">알콜도수 순</div>
-            <div class="filter-option">모델/시리즈별</div>
+          <h2>전통주 > 보해</h2>
+          <div class="header-right-wrapper">
+            <div class="svg-wrapper">
+              <img
+                src="../static//assets/img/검색.svg"
+                alt="검색 아이콘"
+                srcset=""
+              />
+            </div>
+            <div class="svg-wrapper">
+              <img src="../static//assets/img/hamburger.svg" alt="검색 아이콘"
+              srcset="" / >
+            </div>
           </div>
-        </div>
+        </header>
+
+        <!-- 메인 -->
+        <main>
+          <section aria-label="리스트 필터">
+            <div class="list-total">
+              <div>
+                <img
+                  src="../static/assets/img/report.svg"
+                  alt="리포트 아이콘"
+                  srcset=""
+                />
+              </div>
+              <span>총 68개</span>
+            </div>
+
+            <div class="list-filter show-modal">
+              <img
+                src="../static/assets/img/chevron-filter.svg"
+                alt="리스트 필터 아이콘"
+                srcset=""
+              />
+              <span>인기순</span>
+            </div>
+          </section>
+
+          <script>
+            const showModalBtn = document.querySelector(".show-modal");
+            const bottomSheet = document.querySelector(".bottom-sheet");
+            const sheetOverlay = bottomSheet.querySelector(".sheet-overlay");
+            const sheetContent = bottomSheet.querySelector(".content");
+            const closeIcon = sheetContent.querySelector(".close-icon");
+            // const dragIcon = bottomSheet.querySelector(".drag-icon");
+
+            let isDragging = false,
+              startY,
+              startHeight;
+
+            const showBottomSheet = () => {
+              bottomSheet.classList.add("show");
+              document.body.style.overflowY = "hidden";
+              updateSheetHeight(47);
+            };
+            const updateSheetHeight = (height) => {
+              sheetContent.style.height = `${height}vh`;
+
+              bottomSheet.classList.toggle("fullscreen", height === 100);
+            };
+
+            const hideBottomSheet = () => {
+              bottomSheet.classList.remove("show");
+              document.body.style.overflowY = "auto";
+            };
+
+            const dragStart = (e) => {
+              isDragging = true;
+              startY = e.pageY || e.touches?.[0].pageY;
+              startHeight = parseInt(sheetContent.style.height);
+              bottomSheet.classList.add("dragging");
+            };
+
+            const dragging = (e) => {
+              if (!isDragging) return;
+              const delta = startY - (e.pageY || e.touches?.[0].pageY);
+              const newHeight =
+                startHeight + (delta / window.innerHeight) * 100;
+              updateSheetHeight(newHeight);
+            };
+
+            const dragStop = () => {
+              isDragging = false;
+              bottomSheet.classList.remove("dragging");
+              const sheetHeight = parseInt(sheetContent.style.height);
+              sheetHeight < 25
+                ? hideBottomSheet()
+                : sheetHeight > 75
+                ? updateSheetHeight(100)
+                : updateSheetHeight(47);
+            };
+
+            function activateFilterOption(event) {
+              const options = document.querySelectorAll(".filter-option");
+              options.forEach((option) => {
+                option.classList.remove("selected");
+              });
+              event.currentTarget.classList.add("selected");
+            }
+
+            document.addEventListener("DOMContentLoaded", () => {
+              const filterOptions = document.querySelectorAll(".filter-option");
+              filterOptions.forEach((option) => {
+                option.addEventListener("click", activateFilterOption);
+              });
+            });
+
+            // dragIcon.addEventListener("mousedown", dragStart);
+            document.addEventListener("mousemove", dragging);
+            document.addEventListener("mouseup", dragStop);
+            // dragIcon.addEventListener("touchstart", dragStart);
+            document.addEventListener("touchmove", dragging);
+            document.addEventListener("touchend", dragStop);
+            sheetOverlay.addEventListener("click", hideBottomSheet);
+            showModalBtn.addEventListener("click", showBottomSheet);
+            closeIcon.addEventListener("click", hideBottomSheet);
+          </script>
+
+          <section aria-label="주류 리스트">
+            <article class="liquor-item">
+              <img
+                src="../static/assets/img/카스라이트.png"
+                alt="카스 라이트 캔"
+                class="liquor-image"
+              />
+
+              <div class="liquor-info">
+                <div class="info-header">
+                  <p class="model-name">주류모델명 01</p>
+                  <img
+                    class="like-icon"
+                    src="../static/assets/img/heart-fill.png"
+                    alt="좋아요 아이콘"
+                    srcset=""
+                  />
+                </div>
+                <p class="liquor-title">보해</p>
+                <p class="brand">우리마을 막걸리</p>
+                <p class="alcohol-content">알코올 도수 4.5%</p>
+              </div>
+            </article>
+            <article class="liquor-item">
+              <img
+                src="../static/assets/img/카스라이트.png"
+                alt="카스 라이트 캔"
+                class="liquor-image"
+              />
+
+              <div class="liquor-info">
+                <div class="info-header">
+                  <p class="model-name">주류모델명 01</p>
+                  <img
+                    class="like-icon"
+                    src="../static/assets/img/heart-fill.png"
+                    alt="좋아요 아이콘"
+                    srcset=""
+                  />
+                </div>
+                <p class="liquor-title">보해</p>
+                <p class="brand">우리마을 막걸리</p>
+                <p class="alcohol-content">알코올 도수 4.5%</p>
+              </div>
+            </article>
+            <article class="liquor-item">
+              <img
+                src="../static/assets/img/카스라이트.png"
+                alt="카스 라이트 캔"
+                class="liquor-image"
+              />
+
+              <div class="liquor-info">
+                <div class="info-header">
+                  <p class="model-name">주류모델명 01</p>
+                  <img
+                    class="like-icon"
+                    src="../static/assets/img/heart-fill.png"
+                    alt="좋아요 아이콘"
+                    srcset=""
+                  />
+                </div>
+                <p class="liquor-title">보해</p>
+                <p class="brand">우리마을 막걸리</p>
+                <p class="alcohol-content">알코올 도수 4.5%</p>
+              </div>
+            </article>
+            <article class="liquor-item">
+              <img
+                src="../static/assets/img/카스라이트.png"
+                alt="카스 라이트 캔"
+                class="liquor-image"
+              />
+
+              <div class="liquor-info">
+                <div class="info-header">
+                  <p class="model-name">주류모델명 01</p>
+                  <img
+                    class="like-icon"
+                    src="../static/assets/img/heart-fill.png"
+                    alt="좋아요 아이콘"
+                    srcset=""
+                  />
+                </div>
+                <p class="liquor-title">보해</p>
+                <p class="brand">우리마을 막걸리</p>
+                <p class="alcohol-content">알코올 도수 4.5%</p>
+              </div>
+            </article>
+            <article class="liquor-item">
+              <img
+                src="../static/assets/img/카스라이트.png"
+                alt="카스 라이트 캔"
+                class="liquor-image"
+              />
+
+              <div class="liquor-info">
+                <div class="info-header">
+                  <p class="model-name">주류모델명 01</p>
+                  <img
+                    class="like-icon"
+                    src="../static/assets/img/heart-fill.png"
+                    alt="좋아요 아이콘"
+                    srcset=""
+                  />
+                </div>
+                <p class="liquor-title">보해</p>
+                <p class="brand">우리마을 막걸리</p>
+                <p class="alcohol-content">알코올 도수 4.5%</p>
+              </div>
+            </article>
+            <article class="liquor-item">
+              <img
+                src="../static/assets/img/카스라이트.png"
+                alt="카스 라이트 캔"
+                class="liquor-image"
+              />
+
+              <div class="liquor-info">
+                <div class="info-header">
+                  <p class="model-name">주류모델명 01</p>
+                  <img
+                    class="like-icon"
+                    src="../static/assets/img/heart-fill.png"
+                    alt="좋아요 아이콘"
+                    srcset=""
+                  />
+                </div>
+                <p class="liquor-title">보해</p>
+                <p class="brand">우리마을 막걸리</p>
+                <p class="alcohol-content">알코올 도수 4.5%</p>
+              </div>
+            </article>
+            <article class="liquor-item">
+              <img
+                src="../static/assets/img/카스라이트.png"
+                alt="카스 라이트 캔"
+                class="liquor-image"
+              />
+
+              <div class="liquor-info">
+                <div class="info-header">
+                  <p class="model-name">주류모델명 01</p>
+                  <img
+                    class="like-icon"
+                    src="../static/assets/img/heart-fill.png"
+                    alt="좋아요 아이콘"
+                    srcset=""
+                  />
+                </div>
+                <p class="liquor-title">보해</p>
+                <p class="brand">우리마을 막걸리</p>
+                <p class="alcohol-content">알코올 도수 4.5%</p>
+              </div>
+            </article>
+            <article class="liquor-item">
+              <img
+                src="../static/assets/img/카스라이트.png"
+                alt="카스 라이트 캔"
+                class="liquor-image"
+              />
+
+              <div class="liquor-info">
+                <div class="info-header">
+                  <p class="model-name">주류모델명 01</p>
+                  <img
+                    class="like-icon"
+                    src="../static/assets/img/heart-fill.png"
+                    alt="좋아요 아이콘"
+                    srcset=""
+                  />
+                </div>
+                <p class="liquor-title">보해</p>
+                <p class="brand">우리마을 막걸리</p>
+                <p class="alcohol-content">알코올 도수 4.5%</p>
+              </div>
+            </article>
+          </section>
+        </main>
+
+        <!-- 하단 내비게이션 -->
+        <nav aria-label="하단 네비게이션 바">
+          <ul>
+            <li>
+              <div class="nav-icon-wrapper">
+                <img src="/static/assets/img/홈.svg" alt="" />
+              </div>
+              <a href="#" class="active">홈</a>
+            </li>
+            <li>
+              <div class="nav-icon-wrapper">
+                <img src="/static/assets/img/조회.svg" alt="" />
+              </div>
+              <a href="#">조회</a>
+            </li>
+            <li class="order-buttonWrap">
+              <div class="order-circle-outline"></div>
+              <div class="order-button">
+                <div class="order-circle">
+                  <img src="/static/assets/img/주문.svg" alt="" />
+                  <span>ORDER</span>
+                </div>
+              </div>
+
+              <div style="opacity: 0" class="nav-icon-wrapper">
+                <img src="/static/assets/img/주판.svg" alt="" />
+              </div>
+              <a href="#">주문</a>
+            </li>
+            <li>
+              <div class="nav-icon-wrapper">
+                <img src="/static/assets/img/통계.svg" alt="" />
+              </div>
+              <a href="#">통계</a>
+            </li>
+            <li>
+              <div class="nav-icon-wrapper">
+                <img src="/static/assets/img/주판.svg" alt="" />
+              </div>
+              <a href="#">주판</a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
-
-    <!-- 헤더 -->
-    <header>
-      <div class="header-left-wrapper">
-        <div class="svg-wrapper">
-          <img
-            src="../static//assets/img/chevron-left.svg"
-            alt="이전 회살표 아이콘"
-            srcset=""
-          />
-        </div>
-      </div>
-      <h2>전통주 > 보해</h2>
-      <div class="header-right-wrapper">
-        <div class="svg-wrapper">
-          <img
-            src="../static//assets/img/검색.svg"
-            alt="검색 아이콘"
-            srcset=""
-          />
-        </div>
-        <div class="svg-wrapper">
-          <img src="../static//assets/img/hamburger.svg" alt="검색 아이콘"
-          srcset="" / >
-        </div>
-      </div>
-    </header>
-
-    <!-- 메인 -->
-    <main>
-      <section aria-label="리스트 필터">
-        <div class="list-total">
-          <div>
-            <img
-              src="../static/assets/img/report.svg"
-              alt="리포트 아이콘"
-              srcset=""
-            />
-          </div>
-          <span>총 68개</span>
-        </div>
-
-        <div class="list-filter show-modal">
-          <img
-            src="../static/assets/img/chevron-filter.svg"
-            alt="리스트 필터 아이콘"
-            srcset=""
-          />
-          <span>인기순</span>
-        </div>
-      </section>
-
-      <script>
-        const showModalBtn = document.querySelector(".show-modal");
-        const bottomSheet = document.querySelector(".bottom-sheet");
-        const sheetOverlay = bottomSheet.querySelector(".sheet-overlay");
-        const sheetContent = bottomSheet.querySelector(".content");
-        const closeIcon = sheetContent.querySelector(".close-icon");
-        // const dragIcon = bottomSheet.querySelector(".drag-icon");
-
-        let isDragging = false,
-          startY,
-          startHeight;
-
-        const showBottomSheet = () => {
-          bottomSheet.classList.add("show");
-          document.body.style.overflowY = "hidden";
-          updateSheetHeight(47);
-        };
-        const updateSheetHeight = (height) => {
-          sheetContent.style.height = `${height}vh`;
-
-          bottomSheet.classList.toggle("fullscreen", height === 100);
-        };
-
-        const hideBottomSheet = () => {
-          bottomSheet.classList.remove("show");
-          document.body.style.overflowY = "auto";
-        };
-
-        const dragStart = (e) => {
-          isDragging = true;
-          startY = e.pageY || e.touches?.[0].pageY;
-          startHeight = parseInt(sheetContent.style.height);
-          bottomSheet.classList.add("dragging");
-        };
-
-        const dragging = (e) => {
-          if (!isDragging) return;
-          const delta = startY - (e.pageY || e.touches?.[0].pageY);
-          const newHeight = startHeight + (delta / window.innerHeight) * 100;
-          updateSheetHeight(newHeight);
-        };
-
-        const dragStop = () => {
-          isDragging = false;
-          bottomSheet.classList.remove("dragging");
-          const sheetHeight = parseInt(sheetContent.style.height);
-          sheetHeight < 25
-            ? hideBottomSheet()
-            : sheetHeight > 75
-            ? updateSheetHeight(100)
-            : updateSheetHeight(47);
-        };
-
-        function activateFilterOption(event) {
-          const options = document.querySelectorAll(".filter-option");
-          options.forEach((option) => {
-            option.classList.remove("selected");
-          });
-          event.currentTarget.classList.add("selected");
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-          const filterOptions = document.querySelectorAll(".filter-option");
-          filterOptions.forEach((option) => {
-            option.addEventListener("click", activateFilterOption);
-          });
-        });
-
-        // dragIcon.addEventListener("mousedown", dragStart);
-        document.addEventListener("mousemove", dragging);
-        document.addEventListener("mouseup", dragStop);
-        // dragIcon.addEventListener("touchstart", dragStart);
-        document.addEventListener("touchmove", dragging);
-        document.addEventListener("touchend", dragStop);
-        sheetOverlay.addEventListener("click", hideBottomSheet);
-        showModalBtn.addEventListener("click", showBottomSheet);
-        closeIcon.addEventListener("click", hideBottomSheet);
-      </script>
-
-      <section aria-label="주류 리스트">
-        <article class="liquor-item">
-          <img
-            src="../static/assets/img/카스라이트.png"
-            alt="카스 라이트 캔"
-            class="liquor-image"
-          />
-
-          <div class="liquor-info">
-            <div class="info-header">
-              <p class="model-name">주류모델명 01</p>
-              <img
-                class="like-icon"
-                src="../static/assets/img/heart-fill.png"
-                alt="좋아요 아이콘"
-                srcset=""
-              />
-            </div>
-            <p class="liquor-title">보해</p>
-            <p class="brand">우리마을 막걸리</p>
-            <p class="alcohol-content">알코올 도수 4.5%</p>
-          </div>
-        </article>
-        <article class="liquor-item">
-          <img
-            src="../static/assets/img/카스라이트.png"
-            alt="카스 라이트 캔"
-            class="liquor-image"
-          />
-
-          <div class="liquor-info">
-            <div class="info-header">
-              <p class="model-name">주류모델명 01</p>
-              <img
-                class="like-icon"
-                src="../static/assets/img/heart-fill.png"
-                alt="좋아요 아이콘"
-                srcset=""
-              />
-            </div>
-            <p class="liquor-title">보해</p>
-            <p class="brand">우리마을 막걸리</p>
-            <p class="alcohol-content">알코올 도수 4.5%</p>
-          </div>
-        </article>
-        <article class="liquor-item">
-          <img
-            src="../static/assets/img/카스라이트.png"
-            alt="카스 라이트 캔"
-            class="liquor-image"
-          />
-
-          <div class="liquor-info">
-            <div class="info-header">
-              <p class="model-name">주류모델명 01</p>
-              <img
-                class="like-icon"
-                src="../static/assets/img/heart-fill.png"
-                alt="좋아요 아이콘"
-                srcset=""
-              />
-            </div>
-            <p class="liquor-title">보해</p>
-            <p class="brand">우리마을 막걸리</p>
-            <p class="alcohol-content">알코올 도수 4.5%</p>
-          </div>
-        </article>
-        <article class="liquor-item">
-          <img
-            src="../static/assets/img/카스라이트.png"
-            alt="카스 라이트 캔"
-            class="liquor-image"
-          />
-
-          <div class="liquor-info">
-            <div class="info-header">
-              <p class="model-name">주류모델명 01</p>
-              <img
-                class="like-icon"
-                src="../static/assets/img/heart-fill.png"
-                alt="좋아요 아이콘"
-                srcset=""
-              />
-            </div>
-            <p class="liquor-title">보해</p>
-            <p class="brand">우리마을 막걸리</p>
-            <p class="alcohol-content">알코올 도수 4.5%</p>
-          </div>
-        </article>
-        <article class="liquor-item">
-          <img
-            src="../static/assets/img/카스라이트.png"
-            alt="카스 라이트 캔"
-            class="liquor-image"
-          />
-
-          <div class="liquor-info">
-            <div class="info-header">
-              <p class="model-name">주류모델명 01</p>
-              <img
-                class="like-icon"
-                src="../static/assets/img/heart-fill.png"
-                alt="좋아요 아이콘"
-                srcset=""
-              />
-            </div>
-            <p class="liquor-title">보해</p>
-            <p class="brand">우리마을 막걸리</p>
-            <p class="alcohol-content">알코올 도수 4.5%</p>
-          </div>
-        </article>
-        <article class="liquor-item">
-          <img
-            src="../static/assets/img/카스라이트.png"
-            alt="카스 라이트 캔"
-            class="liquor-image"
-          />
-
-          <div class="liquor-info">
-            <div class="info-header">
-              <p class="model-name">주류모델명 01</p>
-              <img
-                class="like-icon"
-                src="../static/assets/img/heart-fill.png"
-                alt="좋아요 아이콘"
-                srcset=""
-              />
-            </div>
-            <p class="liquor-title">보해</p>
-            <p class="brand">우리마을 막걸리</p>
-            <p class="alcohol-content">알코올 도수 4.5%</p>
-          </div>
-        </article>
-        <article class="liquor-item">
-          <img
-            src="../static/assets/img/카스라이트.png"
-            alt="카스 라이트 캔"
-            class="liquor-image"
-          />
-
-          <div class="liquor-info">
-            <div class="info-header">
-              <p class="model-name">주류모델명 01</p>
-              <img
-                class="like-icon"
-                src="../static/assets/img/heart-fill.png"
-                alt="좋아요 아이콘"
-                srcset=""
-              />
-            </div>
-            <p class="liquor-title">보해</p>
-            <p class="brand">우리마을 막걸리</p>
-            <p class="alcohol-content">알코올 도수 4.5%</p>
-          </div>
-        </article>
-        <article class="liquor-item">
-          <img
-            src="../static/assets/img/카스라이트.png"
-            alt="카스 라이트 캔"
-            class="liquor-image"
-          />
-
-          <div class="liquor-info">
-            <div class="info-header">
-              <p class="model-name">주류모델명 01</p>
-              <img
-                class="like-icon"
-                src="../static/assets/img/heart-fill.png"
-                alt="좋아요 아이콘"
-                srcset=""
-              />
-            </div>
-            <p class="liquor-title">보해</p>
-            <p class="brand">우리마을 막걸리</p>
-            <p class="alcohol-content">알코올 도수 4.5%</p>
-          </div>
-        </article>
-      </section>
-    </main>
-
-    <!-- 하단 내비게이션 -->
-    <nav aria-label="하단 네비게이션 바">
-      <ul>
-        <li>
-          <div class="nav-icon-wrapper">
-            <img src="/static/assets/img/홈.svg" alt="" />
-          </div>
-          <a href="#" class="active">홈</a>
-        </li>
-        <li>
-          <div class="nav-icon-wrapper">
-            <img src="/static/assets/img/조회.svg" alt="" />
-          </div>
-          <a href="#">조회</a>
-        </li>
-        <li class="order-buttonWrap">
-          <div class="order-circle-outline"></div>
-          <div class="order-button">
-            <div class="order-circle">
-              <img src="/static/assets/img/주문.svg" alt="" />
-              <span>ORDER</span>
-            </div>
-          </div>
-
-          <div style="opacity: 0" class="nav-icon-wrapper">
-            <img src="/static/assets/img/주판.svg" alt="" />
-          </div>
-          <a href="#">주문</a>
-        </li>
-        <li>
-          <div class="nav-icon-wrapper">
-            <img src="/static/assets/img/통계.svg" alt="" />
-          </div>
-          <a href="#">통계</a>
-        </li>
-        <li>
-          <div class="nav-icon-wrapper">
-            <img src="/static/assets/img/주판.svg" alt="" />
-          </div>
-          <a href="#">주판</a>
-        </li>
-      </ul>
-    </nav>
   </body>
 </html>
