@@ -99,8 +99,9 @@ section[aria-label="리스트 필터"] {
 .bottom-sheet {
   position: fixed;
   top: 0;
-  left: 0;
+  /* left: 0; */
   width: 100%;
+  max-width: 600px;
   height: 100%;
   display: flex;
   opacity: 0;
@@ -110,6 +111,7 @@ section[aria-label="리스트 필터"] {
   justify-content: flex-end;
   transition: 0.1s linear;
 }
+
 .bottom-sheet.show {
   opacity: 1;
   pointer-events: auto;
@@ -123,6 +125,7 @@ section[aria-label="리스트 필터"] {
   height: 100%;
   opacity: 0.2;
   background: #000;
+  /* left: calc(50vw); */
 }
 .bottom-sheet .content {
   width: 100%;
@@ -131,7 +134,6 @@ section[aria-label="리스트 필터"] {
   max-height: 100vh;
   height: 50vh;
   max-width: 1150px;
-  padding: 0 30px;
   transform: translateY(100%);
   border-radius: 12px 12px 0 0;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);

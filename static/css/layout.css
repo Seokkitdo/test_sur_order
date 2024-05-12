@@ -35,12 +35,20 @@
   .intro {
     display: block !important;
   }
+  .bottom-sheet {
+    left: calc(50vw);
+  }
 }
 
 @media (max-width: 1199px) {
   .intro {
     display: none;
   }
+  .bottom-sheet {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .main-wrap {
     position: relative;
     left: calc(-50% + 50vw);
