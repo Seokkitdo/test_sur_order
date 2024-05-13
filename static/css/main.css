@@ -87,6 +87,7 @@ section {
 /* 슬라이드 */
 .sliderwrap {
   width: 100%;
+  position: relative;
 }
 
 .sliderwrap img {
@@ -98,7 +99,7 @@ section {
 .sliderwrap .bx-pager {
   position: absolute;
   right: 20px;
-  bottom: 30px;
+  bottom: 20px;
   text-align: center;
 }
 
@@ -114,15 +115,17 @@ section {
 
 .sliderwrap .bx-pager div {
   display: inline-block;
+  padding: 0 3px;
 }
 
 .sliderwrap .bx-pager div a {
   display: block;
   width: 15px;
   height: 15px;
-  background: gray;
+  background: lightgray;
   color: transparent;
   border-radius: 100%;
+  font-size: 0;
 }
 
 .bx-controls-direction {
@@ -130,7 +133,7 @@ section {
 }
 
 .sliderwrap .bx-pager div .active {
-  background: white;
+  background: violet;
 }
 
 /* 주류마켓 스타일 */

@@ -72,14 +72,8 @@
                 var slider = $(".slider").bxSlider({
                   wrapperClass: "sliderwrap",
                   pagerType: "short",
+                  auto: true,
                   // pagerShortSeparator: " / ",
-                  onSliderLoad: function (currentIndex) {
-                    console.log(currentIndex);
-                    var totalSlides = slider.getSlideCount();
-
-                    console.log(totalSlides);
-                    $(".bx-default-pager").attr("data-total", currentIndex + 1);
-                  },
                 });
               });
             </script>
