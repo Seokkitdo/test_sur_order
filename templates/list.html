@@ -183,7 +183,7 @@
             closeIcon.addEventListener("click", hideBottomSheet);
           </script>
 
-          <section aria-label="주류 리스트">
+          <section aria-label="주류 리스트" class="liquor-list">
             <article class="liquor-item">
               <img
                 src="../static/assets/img/카스라이트.png"
@@ -361,6 +361,96 @@
               </div>
             </article>
           </section>
+          <div class="sentinel"></div>
+
+          <!-- 무한스크롤 api 요청 -->
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              let observer;
+              let isLoading = false;
+              let currentPage = 1;
+              const maxPages = 3; // 최대 페이지 수
+              const sentinel = document.querySelector(".sentinel");
+
+              // 목데이터 생성 함수
+              const fetchMockData = () => {
+                return new Promise((resolve) => {
+                  setTimeout(() => {
+                    const items = Array.from({ length: 8 }, (_, i) => {
+                      return {
+                        modelName: `주류모델명 ${i + 1}`,
+                        title: "보해",
+                        brand: "우리마을 막걸리",
+                        alcoholContent: "알코올 도수 4.5%",
+                      };
+                    });
+                    resolve({ items });
+                  }, 1000); // 1초 딜레이 후 데이터 반환
+                });
+              };
+
+              const loadMoreItems = (entries, observer) => {
+                entries.forEach((entry) => {
+                  if (
+                    entry.isIntersecting &&
+                    !isLoading &&
+                    currentPage <= maxPages
+                  ) {
+                    isLoading = true; // 로딩 시작
+
+                    // 목데이터 요청
+                    fetchMockData()
+                      .then((data) => {
+                        const itemsContainer =
+                          document.querySelector(".liquor-list");
+                        data.items.forEach((item, index) => {
+                          const element = document.createElement("article");
+                          element.className = "liquor-item";
+                          element.innerHTML = `
+              <img
+                src="../static/assets/img/카스라이트.png"
+                alt="카스 라이트 캔"
+                class="liquor-image"
+              />
+              <div class="liquor-info">
+                <div class="info-header">
+                  <p class="model-name">${item.modelName}</p>
+                  <img
+                    class="like-icon"
+                    src="../static/assets/img/heart-fill.png"
+                    alt="좋아요 아이콘"
+                    srcset=""
+                  />
+                </div>
+                <p class="liquor-title">${item.title}</p>
+                <p class="brand">${item.brand}</p>
+                <p class="alcohol-content">${item.alcoholContent}</p>
+              </div>
+            `;
+                          itemsContainer.appendChild(element);
+                        });
+
+                        currentPage++; // 현재 페이지 증가
+                        isLoading = false; // 로딩 끝
+                      })
+                      .catch((error) => {
+                        console.error("Error fetching data:", error);
+                        isLoading = false;
+                      });
+                  }
+                });
+              };
+
+              const options = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1,
+              };
+
+              observer = new IntersectionObserver(loadMoreItems, options);
+              observer.observe(sentinel);
+            });
+          </script>
         </main>
 
         <!-- 하단 내비게이션 -->
