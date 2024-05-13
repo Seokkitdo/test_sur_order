@@ -368,25 +368,21 @@
             document.addEventListener("DOMContentLoaded", function () {
               let observer;
               let isLoading = false;
-              let currentPage = 1;
-              const maxPages = 3; // 최대 페이지 수
               const sentinel = document.querySelector(".sentinel");
+              let currentPage = 1;
+              let maxPages = null;
 
-              // 목데이터 생성 함수
-              const fetchMockData = () => {
-                return new Promise((resolve) => {
-                  setTimeout(() => {
-                    const items = Array.from({ length: 8 }, (_, i) => {
-                      return {
-                        modelName: `주류모델명 ${i + 1}`,
-                        title: "보해",
-                        brand: "우리마을 막걸리",
-                        alcoholContent: "알코올 도수 4.5%",
-                      };
-                    });
-                    resolve({ items });
-                  }, 1000); // 1초 딜레이 후 데이터 반환
-                });
+              const fetchData = (page) => {
+                return fetch(`/api/items?page=${page}`)
+                  .then((response) => response.json())
+                  .then((data) => {
+                    maxPages = data.maxPages; // 서버에서 최대 페이지 수를 받아옴
+                    return data;
+                  })
+                  .catch((error) => {
+                    console.error("Error fetching data:", error);
+                    throw error;
+                  });
               };
 
               const loadMoreItems = (entries, observer) => {
@@ -394,22 +390,21 @@
                   if (
                     entry.isIntersecting &&
                     !isLoading &&
-                    currentPage <= maxPages
+                    (maxPages === null || currentPage <= maxPages)
                   ) {
-                    isLoading = true; // 로딩 시작
+                    isLoading = true;
 
-                    // 목데이터 요청
-                    fetchMockData()
+                    fetchData(currentPage)
                       .then((data) => {
                         const itemsContainer =
                           document.querySelector(".liquor-list");
-                        data.items.forEach((item, index) => {
+                        data.items.forEach((item) => {
                           const element = document.createElement("article");
                           element.className = "liquor-item";
                           element.innerHTML = `
               <img
-                src="../static/assets/img/카스라이트.png"
-                alt="카스 라이트 캔"
+                src="${item.imageSrc}"
+                alt="${item.imageAlt}"
                 class="liquor-image"
               />
               <div class="liquor-info">
@@ -417,9 +412,8 @@
                   <p class="model-name">${item.modelName}</p>
                   <img
                     class="like-icon"
-                    src="../static/assets/img/heart-fill.png"
+                    src="${item.likeIconSrc}"
                     alt="좋아요 아이콘"
-                    srcset=""
                   />
                 </div>
                 <p class="liquor-title">${item.title}</p>
@@ -430,11 +424,15 @@
                           itemsContainer.appendChild(element);
                         });
 
-                        currentPage++; // 현재 페이지 증가
-                        isLoading = false; // 로딩 끝
+                        currentPage++;
+                        if (currentPage > maxPages) {
+                          observer.unobserve(sentinel); // 마지막 페이지면 더 이상 감시 중지
+                        }
+
+                        isLoading = false;
                       })
                       .catch((error) => {
-                        console.error("Error fetching data:", error);
+                        console.error("Error loading items:", error);
                         isLoading = false;
                       });
                   }
