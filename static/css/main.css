@@ -228,6 +228,30 @@ section[aria-label="다중 슬라이드"] {
   object-fit: cover;
 }
 
+.company {
+  font-size: 12px;
+  letter-spacing: -0.02em;
+}
+
+.brand {
+  font-size: 13px;
+  overflow: hidden;
+  word-wrap: break-word;
+  margin-top: 2px;
+  white-space: normal;
+  line-height: 20px;
+  max-height: 40px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.alcohol-content {
+  margin-top: 5px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
 .contour {
   width: 100%;
   height: 10px;
