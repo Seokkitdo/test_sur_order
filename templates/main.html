@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- 기본 태그 스타일 초기화 -->
     <link rel="stylesheet" href="../static/css/reset.css" />
     <!-- 메인 스타일 -->
@@ -43,6 +44,24 @@
           </div>
         </header>
 
+        <section id="home_nav" class="off">
+          <div class="cart"><a>장바구니</a><span class="count">0</span></div>
+          <div class="close" style="margin-top: 10px"><a>닫기</a></div>
+        </section>
+
+        <script>
+          $(document).ready(function () {
+            $(".header-sidemenu-btn img").click(function () {
+              console.log("hello");
+              $("#home_nav").removeClass("off").addClass("on");
+            });
+
+            $("#home_nav .close a").click(function () {
+              $("#home_nav").removeClass("on").addClass("off");
+            });
+          });
+        </script>
+
         <!-- 메인 -->
         <main>
           <!-- 유저정보 -->
@@ -67,7 +86,6 @@
               </ul>
             </div>
 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
             <script>
               $(document).ready(function () {

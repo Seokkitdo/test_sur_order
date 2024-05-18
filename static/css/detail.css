@@ -230,7 +230,7 @@ div[aria-label="주문"] {
   position: fixed;
   bottom: 0;
   width: 100%;
-  max-width: 600px;
+  max-width: 640px;
   background-color: #fff;
   box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;

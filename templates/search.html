@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주류 주문 서비스</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"
+    />
+    <!-- 기본 태그 스타일 초기화 -->
+    <link rel="stylesheet" href="../static/css/reset.css" />
+    <!-- 메인 스타일 -->
+    <link rel="stylesheet" href="../static/css/search.css" />
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="../static/css/layout.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="intro">
+        <div class="intro-content">
+          <h3 class="logo">SUL ORDER</h3>
+          <p>주류 1등 쇼핑몰</p>
+        </div>
+      </div>
+
+      <div class="main-wrap">
+        <!-- 헤더 -->
+        <header>
+          <div class="search-container">
+            <form id="search-form" class="search-form">
+              <a href="http://127.0.0.1:5500/templates/list.html">
+                <button type="button" class="svg-wrapper">
+                  <img src="../static/assets/img/chevron-left.svg" alt="" />
+                </button>
+              </a>
+              <input
+                type="text"
+                id="search-input"
+                class="search-input"
+                placeholder="어떤 와인을 찾으세요?"
+              />
+            </form>
+          </div>
+        </header>
+
+        <!-- 메인 -->
+        <main></main>
+
+        <!-- 하단 내비게이션 -->
+        <nav aria-label="하단 네비게이션 바">
+          <ul>
+            <li>
+              <div class="nav-icon-wrapper">
+                <img src="/static/assets/img/홈.svg" alt="" />
+              </div>
+              <a href="#" class="active">홈</a>
+            </li>
+            <li>
+              <div class="nav-icon-wrapper">
+                <img src="/static/assets/img/조회.svg" alt="" />
+              </div>
+              <a href="#">조회</a>
+            </li>
+            <li class="order-buttonWrap">
+              <div class="order-circle-outline"></div>
+              <div class="order-button">
+                <div class="order-circle">
+                  <img src="/static/assets/img/주문.svg" alt="" />
+                  <span>ORDER</span>
+                </div>
+              </div>
+
+              <div style="opacity: 0" class="nav-icon-wrapper">
+                <img src="/static/assets/img/주판.svg" alt="" />
+              </div>
+              <a href="#">주문</a>
+            </li>
+            <li>
+              <div class="nav-icon-wrapper">
+                <img src="/static/assets/img/통계.svg" alt="" />
+              </div>
+              <a href="#">통계</a>
+            </li>
+            <li>
+              <div class="nav-icon-wrapper">
+                <img src="/static/assets/img/주판.svg" alt="" />
+              </div>
+              <a href="#">주판</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </body>
+</html>
