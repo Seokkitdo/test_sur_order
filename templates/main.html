@@ -35,9 +35,11 @@
       <div class="main-wrap">
         <!-- 헤더 -->
         <header>
-          <h3 class="logo">SUL ORDER</h3>
-          <div class="header-sidemenu-btn">
-            <img src="../static/assets/img/hamburger.svg" alt="" />
+          <div class="header-container">
+            <h3 class="logo">SUL ORDER</h3>
+            <div class="header-sidemenu-btn">
+              <img src="../static/assets/img/hamburger.svg" alt="" />
+            </div>
           </div>
         </header>
 
@@ -69,7 +71,7 @@
             <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
             <script>
               $(document).ready(function () {
-                var slider = $(".slider").bxSlider({
+                let slider = $(".slider").bxSlider({
                   wrapperClass: "sliderwrap",
                   pagerType: "short",
                   auto: true,
@@ -295,21 +297,64 @@
                   <p class="brand">진로</p>
                   <p class="alcohol-content">40%</p>
                 </li>
+
+                <li>
+                  <img
+                    src="https://www.purpledog.co.kr/_next/image?url=https%3A%2F%2Fpurpledog-public.s3.ap-northeast-2.amazonaws.com%2Fproduct%2F124291%2Fthumbnail%2F%E1%84%85%E1%85%A1%E1%84%87%E1%85%B3%E1%84%82%E1%85%B5%E1%84%85%E1%85%B3%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%87%E1%85%B5%E1%84%82%E1%85%A5%E1%86%AB%E1%84%89%E1%85%B3%20%E1%84%91%E1%85%B5%E1%84%82%E1%85%A9%E1%84%90%E1%85%A1%E1%84%8C%E1%85%B1%20%E1%84%86%E1%85%A9%E1%84%87%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8B%E1%85%B0%E1%86%B8%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF%20%E1%84%8F%E1%85%B3%E1%84%80%E1%85%B5_20230306083957.png&w=1080&q=100"
+                  />
+                  <p class="company">하이트진로</p>
+                  <p class="brand">진로</p>
+                  <p class="alcohol-content">40%</p>
+                </li>
               </ul>
             </div>
 
             <script>
               $(document).ready(function () {
-                var slider = $(".multi-banner").bxSlider({
-                  wrapperClass: "multi-banner-wrap",
-                  auto: true,
-                  minSlides: 5,
-                  maxSlides: 5,
-                  slideWidth: 100,
-                  slideMargin: 10,
-                  moveSlides: 1,
-                  pager: false,
-                  // pagerShortSeparator: " / ",
+                function getSliderSettings() {
+                  var width = $(window).width();
+                  if (width >= 600) {
+                    return { minSlides: 5, maxSlides: 5, slideWidth: 180 };
+                  } else if (width >= 500) {
+                    return { minSlides: 4, maxSlides: 4, slideWidth: 150 };
+                  } else if (width >= 450) {
+                    return { minSlides: 4, maxSlides: 4, slideWidth: 120 };
+                  } else if (width >= 330) {
+                    return { minSlides: 3, maxSlides: 3, slideWidth: 150 };
+                  } else if (width >= 200) {
+                    return { minSlides: 2, maxSlides: 2, slideWidth: 120 };
+                  } else {
+                    return { minSlides: 1, maxSlides: 1, slideWidth: 300 };
+                  }
+                }
+
+                var sliderSettings = getSliderSettings();
+                var slider = $(".multi-banner").bxSlider(
+                  $.extend(
+                    {
+                      wrapperClass: "multi-banner-wrap",
+                      auto: true,
+                      slideMargin: 10,
+                      moveSlides: 1,
+                      pager: false,
+                    },
+                    sliderSettings
+                  )
+                );
+
+                $(window).resize(function () {
+                  slider.reloadSlider(
+                    $.extend(
+                      {
+                        wrapperClass: "multi-banner-wrap",
+                        auto: true,
+                        slideMargin: 10,
+                        moveSlides: 1,
+                        pager: false,
+                      },
+                      getSliderSettings()
+                    )
+                  );
                 });
               });
             </script>
@@ -345,17 +390,17 @@
             <div class="footer-banner-wrap">
               <ul class="footer-banner">
                 <li>
-                  <img src="../static/assets/img/하단배너.png" />
+                  <img src="../static/assets/img/클라우드.jpeg" />
                 </li>
                 <li>
-                  <img src="../static/assets/img/하단배너.png" />
+                  <img src="../static/assets/img/클라우드.jpeg" />
                 </li>
               </ul>
             </div>
 
             <script>
               $(document).ready(function () {
-                var slider = $(".footer-banner").bxSlider({
+                let slider = $(".footer-banner").bxSlider({
                   wrapperClass: "footer-banner-wrap",
                   auto: true,
                   // pagerShortSeparator: " / ",
