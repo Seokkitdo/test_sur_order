@@ -4,10 +4,21 @@ body {
 
 /* 리스트 헤더 */
 header {
+  position: fixed;
+  max-width: 640px;
+  top: 0;
+  left: calc(50% - 45px);
+  width: 100%;
+  background-color: #fff;
+  height: 50px;
+}
+
+.header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12.5px 10px;
+  padding: 20px 20px;
+  background-color: #fff;
 }
 
 .header-left-wrapper {
@@ -45,12 +56,17 @@ header h2 {
   align-items: center;
 }
 
+.main {
+  margin-top: 102.7px;
+}
+
 /* 리스트 필터 */
-section[aria-label="리스트 필터"] {
+.filter-wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px 15px;
+  background-color: #fff;
+  padding: 0 20px 15px;
   border-bottom: 1px solid #eeeeee;
 }
 
@@ -225,10 +241,10 @@ section[aria-label="리스트 필터"] {
 /* 리스트 */
 section[aria-label="주류 리스트"] {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  max-width: 600px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9375rem;
   padding: 20px;
+  overflow-y: auto;
 }
 
 .liquor-item {
@@ -242,6 +258,8 @@ section[aria-label="주류 리스트"] {
 
 .liquor-info {
   margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 0 5px;
 }
 
 .info-header {
@@ -298,12 +316,14 @@ section[aria-label="주류 리스트"] {
 /* 하단 내비게이션 바 */
 nav[aria-label="하단 네비게이션 바"] {
   position: fixed;
+  max-width: 640px;
   bottom: 0;
+  left: calc(50% - 45px);
+  box-shadow: 0 -8px 16px -5px rgb(0 0 0 / 8%);
   width: 100%;
-  max-width: 600px;
-  background-color: #fff;
-  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  /* padding: 0 15px; */
+  background: #fff;
+  z-index: 10;
 }
 
 nav[aria-label="하단 네비게이션 바"] ul {
@@ -403,4 +423,32 @@ nav[aria-label="하단 네비게이션 바"] ul li .active {
   font-weight: 800;
   line-height: 10.74px;
   text-align: center;
+}
+
+@media (min-width: 1200px) {
+}
+
+@media (max-width: 1199px) {
+  header {
+    position: fixed;
+    max-width: 640px;
+    top: 0;
+    left: calc(50%);
+    transform: translateX(-50%);
+    width: 100%;
+    background: #fff;
+    height: 50px;
+  }
+  nav[aria-label="하단 네비게이션 바"] {
+    position: fixed;
+    max-width: 600px;
+    bottom: 0;
+    left: calc(50%);
+    transform: translateX(-50%);
+    box-shadow: 0 -8px 16px -5px rgb(0 0 0 / 8%);
+    width: 100%;
+    padding: 0 15px;
+    background: #fff;
+    z-index: 10;
+  }
 }

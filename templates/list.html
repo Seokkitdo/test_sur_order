@@ -54,34 +54,35 @@
 
         <!-- 헤더 -->
         <header>
-          <div class="header-left-wrapper">
-            <div class="svg-wrapper">
-              <img
-                src="../static//assets/img/chevron-left.svg"
-                alt="이전 회살표 아이콘"
-                srcset=""
-              />
+          <div class="header-container">
+            <div class="header-left-wrapper">
+              <div class="svg-wrapper">
+                <img
+                  src="../static//assets/img/chevron-left.svg"
+                  alt="이전 회살표 아이콘"
+                  srcset=""
+                />
+              </div>
+            </div>
+            <h2>전통주 > 보해</h2>
+            <div class="header-right-wrapper">
+              <a href="http://127.0.0.1:5500/templates/search.html">
+                <div class="svg-wrapper">
+                  <img
+                    src="../static//assets/img/검색.svg"
+                    alt="검색 아이콘"
+                    srcset=""
+                  />
+                </div>
+              </a>
+              <div class="svg-wrapper">
+                <img src="../static//assets/img/hamburger.svg" alt="검색 아이콘"
+                srcset="" / >
+              </div>
             </div>
           </div>
-          <h2>전통주 > 보해</h2>
-          <div class="header-right-wrapper">
-            <div class="svg-wrapper">
-              <img
-                src="../static//assets/img/검색.svg"
-                alt="검색 아이콘"
-                srcset=""
-              />
-            </div>
-            <div class="svg-wrapper">
-              <img src="../static//assets/img/hamburger.svg" alt="검색 아이콘"
-              srcset="" / >
-            </div>
-          </div>
-        </header>
 
-        <!-- 메인 -->
-        <main>
-          <section aria-label="리스트 필터">
+          <div class="filter-wrap">
             <div class="list-total">
               <div>
                 <img
@@ -101,7 +102,14 @@
               />
               <span>인기순</span>
             </div>
-          </section>
+          </div>
+        </header>
+
+        <!-- 메인 -->
+        <main style="margin-top: 110px">
+          <!-- <section aria-label="리스트 필터">
+            
+          </section> -->
 
           <script>
             const showModalBtn = document.querySelector(".show-modal");
