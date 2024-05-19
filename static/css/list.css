@@ -57,6 +57,74 @@ header h2 {
   align-items: center;
 }
 
+.header-sidemenu-btn {
+  display: block;
+  font-size: 1.5em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#home_nav.off {
+  left: 140% !important;
+  transition: left 0.3s;
+  z-index: 999999;
+}
+
+#home_nav.on {
+  left: calc(50% - 45px) !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999999;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+#home_nav {
+  position: fixed;
+  max-width: 640px;
+  left: 140% !important;
+  transition: left 0.3s;
+  background: #fff;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#home_nav .cart {
+  position: absolute;
+  right: 66px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+}
+
+@media only screen and (max-width: 1200px) {
+  #home_nav.on {
+    left: 50% !important;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #header,
+  #home .top_area,
+  #home_nav,
+  .popup_wrap,
+  .quick_menu,
+  .quick_menu02 {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 .main {
   margin-top: 102.7px;
 }

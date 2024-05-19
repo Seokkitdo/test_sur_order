@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- 기본 태그 스타일 초기화 -->
     <link rel="stylesheet" href="../static/css/reset.css" />
     <!-- 메인 스타일 -->
@@ -76,8 +77,10 @@
                 </div>
               </a>
               <div class="svg-wrapper">
-                <img src="../static//assets/img/hamburger.svg" alt="검색 아이콘"
-                srcset="" / >
+                <div class="header-sidemenu-btn">
+                  <img src="../static//assets/img/hamburger.svg" alt="사이드메뉴
+                  아이콘" srcset="" / >
+                </div>
               </div>
             </div>
           </div>
@@ -104,6 +107,24 @@
             </div>
           </div>
         </header>
+
+        <section id="home_nav" class="off">
+          <div class="cart"><a>장바구니</a><span class="count">0</span></div>
+          <div class="close" style="margin-top: 10px"><a>닫기</a></div>
+        </section>
+
+        <script>
+          $(document).ready(function () {
+            $(".svg-wrapper .header-sidemenu-btn img").click(function () {
+              console.log("hello");
+              $("#home_nav").removeClass("off").addClass("on");
+            });
+
+            $("#home_nav .close a").click(function () {
+              $("#home_nav").removeClass("on").addClass("off");
+            });
+          });
+        </script>
 
         <!-- 메인 -->
         <main style="margin-top: 110px">
