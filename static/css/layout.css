@@ -50,7 +50,7 @@
     display: block !important;
   }
   .bottom-sheet {
-    left: calc(50vw);
+    left: calc(50vw - 45px);
   }
 }
 
