@@ -117,7 +117,7 @@ header h2 {
   top: 0;
   /* left: 0; */
   width: 100%;
-  max-width: 600px;
+  max-width: 640px;
   height: 100%;
   display: flex;
   opacity: 0;
@@ -251,9 +251,17 @@ section[aria-label="주류 리스트"] {
   text-align: left;
 }
 
+.list-wrap {
+  height: auto;
+  background-color: #f6f6f6;
+  border-radius: 10px;
+  padding: 30px;
+}
+
 .liquor-image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
 
 .liquor-info {
@@ -441,7 +449,7 @@ nav[aria-label="하단 네비게이션 바"] ul li .active {
   }
   nav[aria-label="하단 네비게이션 바"] {
     position: fixed;
-    max-width: 600px;
+    max-width: 640px;
     bottom: 0;
     left: calc(50%);
     transform: translateX(-50%);
