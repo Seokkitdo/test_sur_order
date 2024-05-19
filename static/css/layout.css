@@ -38,7 +38,7 @@
   z-index: 10;
   max-width: 640px;
   background: #fff;
-  min-height: 99vh;
+  min-height: 100vh;
   overflow-y: scroll;
   padding-bottom: 80px;
   -ms-overflow-style: none;

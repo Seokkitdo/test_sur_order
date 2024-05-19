@@ -48,6 +48,7 @@ header h2 {
   align-items: center;
   width: 35px;
   height: 35px;
+  cursor: pointer;
 }
 
 .header-right-wrapper {

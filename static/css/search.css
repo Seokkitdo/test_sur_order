@@ -4,7 +4,7 @@ body {
 
 /* 리스트 헤더 */
 header {
-  padding: 5px 5px 5px 0;
+  padding: 15px 10px 5px 0;
 }
 
 .search-form {
@@ -22,6 +22,7 @@ header {
   background: none;
   font-size: 24px;
   padding: 10px 20px;
+  cursor: pointer;
 }
 
 .back-button {
@@ -56,12 +57,14 @@ button:focus {
 /* 하단 내비게이션 바 */
 nav[aria-label="하단 네비게이션 바"] {
   position: fixed;
+  max-width: 640px;
   bottom: 0;
+  left: calc(50% - 45px);
+  box-shadow: 0 -8px 16px -5px rgb(0 0 0 / 8%);
   width: 100%;
-  max-width: 600px;
-  background-color: #fff;
-  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  /* padding: 0 15px; */
+  background: #fff;
+  z-index: 10;
 }
 
 nav[aria-label="하단 네비게이션 바"] ul {
@@ -149,7 +152,7 @@ nav[aria-label="하단 네비게이션 바"] ul li .active {
 }
 
 .order-circle img {
-  width: 12x;
+  width: 12px;
   height: 18px;
   margin-bottom: 3px;
 }
@@ -161,4 +164,32 @@ nav[aria-label="하단 네비게이션 바"] ul li .active {
   font-weight: 800;
   line-height: 10.74px;
   text-align: center;
+}
+
+@media (min-width: 1200px) {
+}
+
+@media (max-width: 1199px) {
+  header {
+    position: fixed;
+    max-width: 640px;
+    top: 0;
+    left: calc(50%);
+    transform: translateX(-50%);
+    width: 100%;
+    background: #fff;
+    height: 50px;
+  }
+  nav[aria-label="하단 네비게이션 바"] {
+    position: fixed;
+    max-width: 640px;
+    bottom: 0;
+    left: calc(50%);
+    transform: translateX(-50%);
+    box-shadow: 0 -8px 16px -5px rgb(0 0 0 / 8%);
+    width: 100%;
+    padding: 0 15px;
+    background: #fff;
+    z-index: 10;
+  }
 }
